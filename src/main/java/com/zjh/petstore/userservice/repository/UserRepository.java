@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.zjh.petstore.userservice.entity.User;
 
 @Repository
-public interface UserRepository extends MongoRepository<User, String> {}
+public interface UserRepository extends MongoRepository<User, String> {
+}

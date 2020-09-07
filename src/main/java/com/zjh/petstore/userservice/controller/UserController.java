@@ -20,37 +20,38 @@ import com.zjh.petstore.userservice.repository.UserRepository;
 @RequestMapping("/user")
 public class UserController {
 
-  @Autowired private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
-  @PostMapping("/")
-  public ResponseEntity<User> createUser(@RequestBody User user) {
-    User newUser = userRepository.save(user);
-    return ResponseEntity.ok(newUser);
-  }
+	@PostMapping("/")
+	public ResponseEntity<User> createUser(@RequestBody User user) {
+		User newUser = userRepository.save(user);
+		return ResponseEntity.ok(newUser);
+	}
 
-  @GetMapping("/{id}")
-  public ResponseEntity<User> getUserById(@PathVariable String id) {
-    Optional<User> optionalUser = userRepository.findById(id);
-    if (optionalUser.isPresent()) {
-      return ResponseEntity.ok(optionalUser.get());
-    }
-    return ResponseEntity.notFound().build();
-  }
+	@GetMapping("/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable String id) {
+		Optional<User> optionalUser = userRepository.findById(id);
+		if (optionalUser.isPresent()) {
+			return ResponseEntity.ok(optionalUser.get());
+		}
+		return ResponseEntity.notFound().build();
+	}
 
-  @PutMapping("/{id}")
-  public ResponseEntity<Boolean> updateUser(@PathVariable String id, @RequestBody User user) {
-    Optional<User> optionalUser = userRepository.findById(id);
-    if (optionalUser.isPresent()) {
-      user.setId(id);
-      userRepository.save(user);
-      return ResponseEntity.ok(true);
-    }
-    return ResponseEntity.notFound().build();
-  }
+	@PutMapping("/{id}")
+	public ResponseEntity<Boolean> updateUser(@PathVariable String id, @RequestBody User user) {
+		Optional<User> optionalUser = userRepository.findById(id);
+		if (optionalUser.isPresent()) {
+			user.setId(id);
+			userRepository.save(user);
+			return ResponseEntity.ok(true);
+		}
+		return ResponseEntity.notFound().build();
+	}
 
-  @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteUserById(@PathVariable String id) {
-    userRepository.deleteById(id);
-    return ResponseEntity.ok().build();
-  }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteUserById(@PathVariable String id) {
+		userRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
 }

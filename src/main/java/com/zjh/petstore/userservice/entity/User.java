@@ -11,12 +11,13 @@ import lombok.Data;
 @Data
 public class User {
 
-  @Id private String id;
-  private String userName;
-  private String firstName;
-  private String lastName;
-  private String password;
-  private String email;
-  private String phone;
-  private UserStatus userStatus;
+	@Id
+	private String id;
+	private String userName;
+	private String firstName;
+	private String lastName;
+	private String password;
+	private String email;
+	private String phone;
+	private UserStatus userStatus;
 }
